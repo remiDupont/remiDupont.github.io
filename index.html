@@ -18,7 +18,7 @@
         // Set apikey, meetingId and participant name
         const apiKey = "2fb5d32e-6639-4c16-809d-7c0c53a4574c"; // generated from app.videosdk.live
         const meetingId = "milkyway";
-        const name = "John Doe";
+        const name = "Entrez votre nom ici et cliquez sur join";
 
         const config = {
           name: name,
@@ -26,7 +26,7 @@
           meetingId: meetingId,
 
           containerId: null,
-          redirectOnLeave: "https://www.videosdk.live/",
+          redirectOnLeave: "https://www.youtube.com/user/Doctissimo",
 
           micEnabled: true,
           webcamEnabled: true,
@@ -39,16 +39,15 @@
           whiteboardEnabled: true,
           raiseHandEnabled: true,
 
-          recordingEnabled: true,
+          recordingEnabled: false,
           recordingEnabledByDefault: false,
           recordingWebhookUrl: "https://www.videosdk.live/callback",
           recordingAWSDirPath: `/meeting-recordings/${meetingId}/`, // automatically save recording in this s3 path
 
           brandingEnabled: true,
           brandLogoURL: "https://picsum.photos/200",
-          brandName: "Awesome startup",
-          poweredBy: true,
-
+          brandName: "Physia_santé",
+          poweredBy: false,
           participantCanLeave: true, // if false, leave button won't be visible
 
           // Live stream meeting to youtube
