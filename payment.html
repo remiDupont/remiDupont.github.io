@@ -3,5 +3,52 @@
 <h1>The button Element</h1>
 
 <button type="button" onclick="alert('Hello world!')">Click Me!</button>
+<button id="pay-button">Pay</button>
+<script>
+  RevolutCheckout("<PUBLIC_ID>").then(function (RC) {
+    var payButton = document.getElementById("pay-button");
+    // On click open payment pop-up
+    payButton.addEventListener("click", function () {
+      RC.payWithPopup({
+        // (mandatory!) name of the cardholder
+        name: "First Last",
+        // (optional) email of the customer
+        email: "customer@example.com",
+        // (optional) phone of the customer
+        phone: "+447950630319",
+        // (optional) billing address of the customer
+        billingAddress: {
+          countryCode: "GB", //if sending billing address, this field is mandatory
+          region: "Greater London",
+          city: "London",
+          streetLine1: "Revolut",
+          streetLine2: "1 Canada Square",
+          postcode: "EC2V 6DN", //if sending billing address, this field is mandatory
+        },
+        // (optional) shipping address of the customer
+        shippingAddress: {
+          countryCode: "GB", //if sending shipping address, this field is mandatory
+          region: "Greater London",
+          city: "London",
+          streetLine1: "Revolut",
+          streetLine2: "1 Canada Square",
+          postcode: "EC2V 6DN", //if sending shipping address, this field is mandatory
+        },
+        // Callback called when payment finished successfully
+        onSuccess() {
+          window.alert("Thank you!");
+        },
+        // Callback in case some error happened
+        onError(message) {
+          window.alert("Oh no :(");
+        },
+        // (optional) Callback in case user cancelled a transaction
+        onCancel() {
+          window.alert("Payment cancelled!");
+        },
+      });
+    });
+  });
+</script>
  
 </body>
